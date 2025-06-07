@@ -1,7 +1,12 @@
+import ReactSlider from 'react-slider'
+
 export default function Settings(){
 
 
     return (
-        <h1>settings</h1>
+        <div style={{textAlign:'left'}}>
+            <label>Work minutes:</label>
+            <label>Break minutes:</label>
+        </div>
     )
 }
