@@ -7,8 +7,8 @@ export default function Timer({onStartSession, dailyCount, settings}){
 
     //LOCAL STATE
     const [customMinutes, setCustomMinutes] = useState('');
-    const [showCustomInput, setShowCustomInput] = useState('false')
-    const [validateError, setValidationError] = useState('')
+    const [showCustomInput, setShowCustomInput] = useState(false)
+    const [validationError, setValidationError] = useState('')
 
     //Handle preset session starts
     const handlePresetSession =  (minutes) => {
@@ -118,10 +118,36 @@ export default function Timer({onStartSession, dailyCount, settings}){
                              </button>
                         </div>
 
-                        
+                        {/* Validation Error */}
+                        {validationError && (
+                            <p className="error-message">{validationError}</p>
+                        )}
+
+                        {/* Quick Custom Options */}
+                        <div className="quick-custom">
+                            <span className="quick-label">Quick</span>
+                            <button className="quick-btn"
+                            onClick={() => setCustomMinutes('15')}>15</button>
+                             <button className="quick-btn"
+                            onClick={() => setCustomMinutes('30')}>30</button>
+                             <button className="quick-btn"
+                            onClick={() => setCustomMinutes('45')}>45</button>
+
+                        </div>
+
+
                     </div>
-                )}
-                
+                )}  
+            </div>
+
+            {/* Session Tips */}
+            <div className="sessions-tios">
+                <p className="tip">
+                💡 Tip: {dailyCount === 0 
+                    ? "Start with a 25-minute session to build momentum!" 
+                    : `Great job! You've completed ${dailyCount} session${dailyCount > 1 ? 's' : ''} today.`
+          }
+                </p>
             </div>
             
             
